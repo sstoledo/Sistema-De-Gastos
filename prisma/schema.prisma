@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,9 +8,17 @@ datasource db {
 }
 
 model pagos {
+<<<<<<< HEAD
   id    Int      @id @default(autoincrement())
   descripcion  String   @db.VarChar(50)
   fechaPago DateTime @db.Date
   montoPago Decimal  @db.Decimal(10, 2)
   isActive  Boolean? @default(true)
+=======
+  id_pago    Int      @id @default(autoincrement())
+  desc_pago  String   @db.VarChar(50)
+  fecha_pago DateTime @db.Date
+  monto_pago Decimal  @db.Decimal(10, 2)
+  is_active  Boolean? @default(true)
+>>>>>>> cd58dcd99006c5f218e11b074288b2eed593b9c2
 }
