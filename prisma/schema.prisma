@@ -12,3 +12,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model pagos {
+  id    Int      @id @default(autoincrement())
+  descripcion  String   @db.VarChar(50)
+  fechaPago DateTime @db.Date
+  montoPago Decimal  @db.Decimal(10, 2)
+  isActive  Boolean? @default(true)
+}
