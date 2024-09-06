@@ -23,7 +23,7 @@ export default function RootLayout({
           <h1 className="text-center capitalize text-3xl text-white">Aministrador básico de gastos</h1>
         </header>
 
-        <main className="container mx-auto">
+        <main className="container mx-auto py-10">
           {children}
         </main>
       </body>
