@@ -19,10 +19,14 @@ export default async function Home() {
 
   return (
     <>
-
-      <div className="container mx-auto py-10">
+        {/*FORMULARIO*/}
         <DataTable columns={columns} data={data} />
-      </div>
+
+        <div className="w-full flex justify-end mt-10">
+          <p className="font-bold text-xl">Total:
+            <span className="ml-2 font-normal">s/. 3400</span>
+          </p>
+        </div>
 
     </>
   );
