@@ -1,38 +1,36 @@
-'use server'
+"use server";
 
-import { prisma } from "@/lib/prisma"
+import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-interface Data{
+interface Data {
   descripcion: string;
-  fechaPago:Date;
-  montoPago:number;
+  fechaPago: Date;
+  montoPago: number;
 }
 
-export const createPayments = async(data:Data)=>{
-
+export const createPayments = async (data: Data) => {
   const payment = await prisma.pagos.create({
-    data:{
-      ...data
-    }
+    data: {
+      ...data,
+    },
   });
 
-  revalidatePath('/');
+  revalidatePath("/");
 
   return payment;
+};
 
-}
-
-export const updatePayments = async(id:number,data:any)=>{
+export const updatePayments = async (id: number, data: Data) => {
   const payment = await prisma.pagos.update({
-    where:{
-      id
+    where: {
+      id,
     },
-    data:{
-      ...data
-    }
-  })
+    data: {
+      ...data,
+    },
+  });
 
-  revalidatePath('/');
+  revalidatePath("/");
   return payment;
-}
+};
