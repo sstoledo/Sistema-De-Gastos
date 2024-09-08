@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "../ui/input";
 import { DatePickerDemo } from "../DatePicker/DatePicker";
 import { Button } from "../ui/button";
+import { createPayments } from "@/actions/payments/create-update-payments";
 
 interface CreateFormData {
   descripcion: string;
@@ -23,12 +24,23 @@ export default function Formulario() {
     }
   })
 
+  async function onSubmit(values:CreateFormData) {
+
+    //TODO:Data conversion
+    const newData = {
+      ...values,
+      montoPago: +values.montoPago
+    }
+
+    await createPayments(newData)
+  }
+
 
 
   return (
-    <div>
+    <div className="border border-gray-200 p-5">
       <Form {...form}>
-        <form className="space-y-8">
+        <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="descripcion"
@@ -39,9 +51,9 @@ export default function Formulario() {
             }}
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex flex-col">Descripcion de pago</FormLabel>
+                <FormLabel className="flex flex-col font-semibold">Descripción de pago</FormLabel>
                 <FormControl>
-                  <Input placeholder="Descripcion" {...field} />
+                  <Input placeholder="Descripción" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -59,9 +71,9 @@ export default function Formulario() {
             }}
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex flex-col">Monto de pago</FormLabel>
+                <FormLabel className="flex flex-col font-semibold">Monto de pago</FormLabel>
                 <FormControl>
-                  <Input type="number" min="0" step="0.01" placeholder="Monto" {...field} />
+                  <Input placeholder="Monto" {...field} type="number"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -74,8 +86,8 @@ export default function Formulario() {
               required: "Fecha de pago es requerida",
             }}
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="flex flex-col">Fecha de pago</FormLabel>
+              <FormItem className="flex flex-col items-start">
+                <FormLabel className="flex flex-col font-semibold">Fecha de pago:</FormLabel>
                 <FormControl>
                   <div className="flex justify-center">
                     <DatePickerDemo
