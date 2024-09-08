@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "../ui/input";
 import { DatePickerDemo } from "../DatePicker/DatePicker";
 import { Button } from "../ui/button";
+import { createPayments } from "@/actions/payments/create-update-payments";
 
 interface CreateFormData {
   descripcion: string;
@@ -23,9 +24,15 @@ export default function Formulario() {
     }
   })
 
-  function onSubmit(values:CreateFormData) {
+  async function onSubmit(values:CreateFormData) {
 
-    console.log(values)
+    //TODO:Data conversion
+    const newData = {
+      ...values,
+      montoPago: +values.montoPago
+    }
+
+    await createPayments(newData)
   }
 
 
