@@ -16,7 +16,7 @@ import {
 export type Payment = {
   descripcion:string;
   monto: number;
-  fechaPago:string;
+  fechaPago:Date;
 }
 
 export const columns: ColumnDef<Payment>[] = [

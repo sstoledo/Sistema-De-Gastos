@@ -6,6 +6,7 @@ import { Input } from "../ui/input";
 import { DatePickerDemo } from "../DatePicker/DatePicker";
 import { Button } from "../ui/button";
 import { createPayments } from "@/actions/payments/create-update-payments";
+import Swal from "sweetalert2";
 
 interface CreateFormData {
   descripcion: string;
@@ -32,11 +33,14 @@ export default function Formulario() {
       montoPago: +values.montoPago
     }
 
-    await createPayments(newData)
+    await createPayments(newData);
+    Swal.fire({
+      title: "Mensaje",
+      text: "Gasto agregado correctamente",
+      icon: "success"
+    });
+
   }
-
-
-
   return (
     <div className="border border-gray-200 p-5">
       <Form {...form}>
