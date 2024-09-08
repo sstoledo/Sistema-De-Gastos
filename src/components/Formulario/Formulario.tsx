@@ -61,7 +61,7 @@ export default function Formulario() {
               <FormItem>
                 <FormLabel className="flex flex-col">Monto de pago</FormLabel>
                 <FormControl>
-                  <Input placeholder="Monto" {...field} />
+                  <Input type="number" min="0" step="0.01" placeholder="Monto" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
