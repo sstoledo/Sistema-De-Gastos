@@ -19,7 +19,7 @@ interface DatePickerProps {
 }
 
 export function DatePickerDemo({value, onChange}:DatePickerProps) {
-
+  const [open, setOpen] = React.useState(false)
   return (
     <Popover>
       <PopoverTrigger asChild>
