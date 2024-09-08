@@ -30,7 +30,7 @@ export default function Formulario() {
     //TODO:Data conversion
     const newData = {
       ...values,
-      montoPago: +values.montoPago
+      montoPago: +values.montoPago,
     }
 
     await createPayments(newData);
