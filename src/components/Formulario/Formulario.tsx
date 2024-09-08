@@ -23,12 +23,17 @@ export default function Formulario() {
     }
   })
 
+  function onSubmit(values:CreateFormData) {
+
+    console.log(values)
+  }
+
 
 
   return (
     <div className="border border-gray-200 p-5">
       <Form {...form}>
-        <form className="space-y-8">
+        <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="descripcion"
