@@ -66,6 +66,10 @@ export default function Formulario({ initialData, mode }: FormularioProps) {
     }, 1200);
   }
 
+  const onCancel = () => {
+    router.push('/');
+  }
+
   return (
     <>
       <div className="border border-gray-200 p-5 w-[500px] mx-auto">
@@ -130,8 +134,9 @@ export default function Formulario({ initialData, mode }: FormularioProps) {
                 </FormItem>
               )}
             />
-            <div className="flex justify-center">
+            <div className="flex justify-around">
               <Button type="submit">Guardar</Button>
+              <Button type="button" onClick={onCancel}>Cancelar</Button>
             </div>
           </form>
         </Form>
