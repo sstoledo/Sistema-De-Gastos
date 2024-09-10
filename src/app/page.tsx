@@ -8,6 +8,7 @@ export default async function Home() {
 
   const payments = await getAllPayments();
 
+  const total = payments.reduce((total,numero)=> total + numero.montoPago,0)
   const paymentsConverted = payments.map((payment)=> {
     return {
       id: payment.id,
@@ -30,7 +31,7 @@ export default async function Home() {
 
           <div className="w-full flex justify-end mt-10">
             <p className="font-bold text-xl">Total:
-              <span className="ml-2 font-normal">s/. 3400</span>
+              <span className="ml-2 font-normal">s/. {total}</span>
             </p>
           </div>
         </div>
