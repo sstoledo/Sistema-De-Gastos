@@ -14,8 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { deletePayment } from "@/actions/payments/delete-payment"
-import Formulario from "../Formulario/Formulario"
-import { getPaymentById } from "@/actions/payments/get-payment-by-id"
 import Link from "next/link"
 
 export type Payment = {

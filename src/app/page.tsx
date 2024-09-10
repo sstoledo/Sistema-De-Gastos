@@ -1,8 +1,6 @@
 import { getAllPayments } from "@/actions/payments/get-payments";
-import Formulario from "@/components/Formulario/Formulario";
 import { columns } from "@/components/payments/column";
 import { DataTable } from "@/components/payments/data-table";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 
@@ -10,6 +8,7 @@ export default async function Home() {
 
   const payments = await getAllPayments();
 
+  const total = payments.reduce((total,numero)=> total + numero.montoPago,0)
   const paymentsConverted = payments.map((payment)=> {
     return {
       id: payment.id,
@@ -32,7 +31,7 @@ export default async function Home() {
 
           <div className="w-full flex justify-end mt-10">
             <p className="font-bold text-xl">Total:
-              <span className="ml-2 font-normal">s/. 3400</span>
+              <span className="ml-2 font-normal">s/. {total}</span>
             </p>
           </div>
         </div>
