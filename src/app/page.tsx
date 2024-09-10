@@ -1,8 +1,6 @@
 import { getAllPayments } from "@/actions/payments/get-payments";
-import Formulario from "@/components/Formulario/Formulario";
 import { columns } from "@/components/payments/column";
 import { DataTable } from "@/components/payments/data-table";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 
